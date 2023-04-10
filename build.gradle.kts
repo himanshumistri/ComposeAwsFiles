@@ -46,10 +46,10 @@ compose.desktop {
             description = "App is based on Compose Desktop UI"
             copyright = "© 2023 Himanshu Mistri. All rights reserved."
             vendor = "https://github.com/himanshumistri"
-            buildTypes.release.proguard {
+            /*buildTypes.release.proguard {
                 obfuscate.set(true)
                 configurationFiles.from(project.file("proguard-rules.pro"))
-            }
+            }*/
             //With Below line , Mac App Start to be installed
             println("Path is ${project.layout.projectDirectory.dir("resources")}")
             appResourcesRootDir.set(project.layout.projectDirectory.dir("resources"))
