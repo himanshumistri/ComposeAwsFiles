@@ -16,6 +16,7 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
 
+var coroutinesVersion ="1.1.1"
 kotlin {
     jvm {
         compilations.all {
@@ -27,6 +28,8 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                //implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:$coroutinesVersion")
+                //implementation("aws.sdk.kotlin:s3:0.18.0-beta")
             }
         }
         val jvmTest by getting
@@ -63,7 +66,7 @@ compose.desktop {
                 menuGroup = "start-menu-group"
                 upgradeUuid = "1bcded87-b937-4be1-8ed0-560a9ee6aad9"
                 msiPackageVersion = "1.0.0"
-
+                exePackageVersion ="1.0.0"
             }
             linux {
                 iconFile.set(project.file("jetpack_icon.png"))
