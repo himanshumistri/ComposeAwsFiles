@@ -27,6 +27,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation("aws.sdk.kotlin:s3:0.18.0-beta")
             }
         }
         val jvmTest by getting
