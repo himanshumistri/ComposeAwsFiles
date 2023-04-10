@@ -16,7 +16,6 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
 
-var coroutinesVersion ="1.1.1"
 kotlin {
     jvm {
         compilations.all {
@@ -28,8 +27,6 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                //implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:$coroutinesVersion")
-                //implementation("aws.sdk.kotlin:s3:0.18.0-beta")
             }
         }
         val jvmTest by getting
@@ -43,35 +40,6 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "ComposeAwsFiles"
             packageVersion = "1.0.0"
-            description = "App is based on Compose Desktop UI"
-            copyright = "© 2023 Himanshu Mistri. All rights reserved."
-            vendor = "https://github.com/himanshumistri"
-            /*buildTypes.release.proguard {
-                obfuscate.set(true)
-                configurationFiles.from(project.file("proguard-rules.pro"))
-            }*/
-            //With Below line , Mac App Start to be installed
-            println("Path is ${project.layout.projectDirectory.dir("resources")}")
-            appResourcesRootDir.set(project.layout.projectDirectory.dir("resources"))
-
-            macOS {
-                iconFile.set(project.file("jetpack_icon.icns"))
-                dmgPackageVersion = packageVersion
-                pkgPackageVersion = packageVersion
-            }
-            /*windows {
-                iconFile.set(project.file("jetpack_icon.ico"))
-                //console = true
-                //perUserInstall = true
-                menuGroup = "start-menu-group"
-                upgradeUuid = "1bcded87-b937-4be1-8ed0-560a9ee6aad9"
-                msiPackageVersion = "1.0.0"
-                exePackageVersion ="1.0.0"
-            }*/
-            linux {
-                iconFile.set(project.file("jetpack_icon.png"))
-            }
-
         }
     }
 }
