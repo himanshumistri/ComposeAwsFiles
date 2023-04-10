@@ -59,7 +59,7 @@ compose.desktop {
                 dmgPackageVersion = packageVersion
                 pkgPackageVersion = packageVersion
             }
-            windows {
+            /*windows {
                 iconFile.set(project.file("jetpack_icon.ico"))
                 //console = true
                 //perUserInstall = true
@@ -67,7 +67,7 @@ compose.desktop {
                 upgradeUuid = "1bcded87-b937-4be1-8ed0-560a9ee6aad9"
                 msiPackageVersion = "1.0.0"
                 exePackageVersion ="1.0.0"
-            }
+            }*/
             linux {
                 iconFile.set(project.file("jetpack_icon.png"))
             }
