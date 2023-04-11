@@ -76,7 +76,7 @@ jobs:
           distribution: 'corretto'
           java-version: '18'
       - name: Build Package
-        run: bash ./gradlew packageReleaseMsi --stacktrace
+        run: bash ./gradlew -P compose.desktop.verbose=true packageReleaseMsi --stacktrace
 #      - name: Delete Old Artifacts
 #        uses: actions/github-script@v6
 #        id: artifact

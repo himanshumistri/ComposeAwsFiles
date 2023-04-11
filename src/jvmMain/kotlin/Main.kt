@@ -26,7 +26,7 @@ fun App() {
                     Button(onClick = {
                         text = "Fetch Data"
                         coroutineScope?.launch {
-                            ReadAwsData.listBucketObjects("MybucketName")
+                            ReadAwsData.listBucketObjects("test-docs")
                         }
 
                     }) {
