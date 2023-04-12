@@ -1,9 +1,6 @@
 import androidx.compose.material.MaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -19,22 +16,30 @@ import repository.ReadAwsData
 @Preview
 fun App() {
     var text by remember { mutableStateOf("Hello, World!") }
+    var error by remember { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
     MaterialTheme {
-            Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
-                Row(modifier = Modifier.width(200.dp)) {
-                    Button(onClick = {
-                        text = "Fetch Data"
-                        coroutineScope?.launch {
-                            ReadAwsData.listBucketObjects("test-docs")
-                        }
 
-                    }) {
-                        Text(text)
+            Column {
+                Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
+                    Row(modifier = Modifier.width(200.dp)) {
+                        Button(onClick = {
+                            text = "Fetch Data"
+                            coroutineScope?.launch {
+                                ReadAwsData.listBucketObjects("test-docs", onResult = {
+                                    println("MSG is $it")
+                                    error = error.plus(it)
+                                })
+                            }
+
+                        }) {
+                            Text(text)
+                        }
                     }
                 }
-
+                Text(text = error)
             }
+
         }
 }
 
